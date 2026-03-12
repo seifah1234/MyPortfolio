@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seif El-Deen Amr | Portfolio</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Inter', sans-serif; }
     
@@ -41,10 +40,6 @@
       border: 1px solid rgba(96, 165, 250, 0.3);
     }
     
-    .timeline-dot {
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.6), 0 0 20px rgba(37, 99, 235, 0.4);
-    }
-    
     .animate-pulse-slow {
       animation: pulse-glow 3s ease-in-out infinite;
     }
@@ -69,119 +64,210 @@
       background: linear-gradient(90deg, #2563EB, #60A5FA);
       border-radius: 2px;
     }
+
+    /* ===== PROFILE PHOTO ===== */
+    .profile-ring {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563EB, #60A5FA);
+      padding: 3px;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.4), 0 0 40px rgba(37, 99, 235, 0.15);
+      display: inline-block;
+    }
+
+    .profile-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #0A0E1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* Fallback initials shown only if image fails */
+    .profile-inner .initials-fallback {
+      display: none;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #60A5FA;
+      text-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+    }
+
+    .profile-inner img.error ~ .initials-fallback,
+    .profile-inner img:not([src]) ~ .initials-fallback {
+      display: flex;
+    }
   </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
   <div id="portfolio-wrapper" class="circuit-bg min-h-full w-full overflow-auto">
+
    <!-- Floating Orbs -->
    <div class="fixed top-20 left-10 w-64 h-64 bg-blue-600 rounded-full opacity-5 blur-3xl animate-pulse-slow pointer-events-none"></div>
-   <div class="fixed bottom-20 right-10 w-96 h-96 bg-blue-400 rounded-full opacity-5 blur-3xl animate-pulse-slow pointer-events-none" style="animation-delay: 1.5s;"></div><!-- Navigation Tabs -->
+   <div class="fixed bottom-20 right-10 w-96 h-96 bg-blue-400 rounded-full opacity-5 blur-3xl animate-pulse-slow pointer-events-none" style="animation-delay: 1.5s;"></div>
+
+   <!-- Navigation Tabs -->
    <div class="sticky top-0 z-50 backdrop-blur-md border-b border-blue-900/30">
     <div class="max-w-5xl mx-auto px-6 py-4">
-     <div class="flex gap-8"><button class="page-nav text-white font-medium text-sm pb-2 border-b-2 border-blue-500 transition-all" data-page="1">About</button> <button class="page-nav text-gray-400 font-medium text-sm pb-2 border-b-2 border-transparent transition-all hover:text-white" data-page="2">Featured Projects</button>
+     <div class="flex gap-8">
+      <button class="page-nav text-white font-medium text-sm pb-2 border-b-2 border-blue-500 transition-all" data-page="1">About</button>
+      <button class="page-nav text-gray-400 font-medium text-sm pb-2 border-b-2 border-transparent transition-all hover:text-white" data-page="2">Featured Projects</button>
      </div>
     </div>
-   </div><!-- Page 1: About -->
+   </div>
+
+   <!-- Page 1: About -->
    <div id="page-1" class="page-content relative z-10 max-w-5xl mx-auto px-6 py-12">
+
     <!-- Header Section -->
     <header class="text-center mb-12">
-     <div class="inline-block mb-6">
-      <div class="w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-blue-600 to-blue-400 p-1 glow-border">
-       <div class="w-full h-full rounded-full bg-[#0A0E1A] flex items-center justify-center">
-        <span id="initials" class="text-3xl font-bold text-blue-400 glow-text">SA</span>
+     <div class="mb-6 flex justify-center">
+      <div class="profile-ring">
+       <div class="profile-inner">
+        <!--
+          ========================================
+          REPLACE THIS PATH WITH YOUR PHOTO PATH
+          Example: src="my-photo.jpg"
+                   src="./images/seif.jpg"
+                   src="https://yoursite.com/photo.jpg"
+          ========================================
+        -->
+        <img
+          src="image.jfif"
+          alt="Seif El-Deen Amr"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
        </div>
       </div>
      </div>
+
      <h1 id="name-display" class="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Seif El-Deen Amr</h1>
      <p id="title-display" class="text-xl text-blue-400 font-medium mb-6 glow-text">Software Developer</p>
      <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
       <span class="flex items-center gap-2">
-       <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-       </svg><span id="location-display">Giza, Egypt</span> </span> <span class="flex items-center gap-2">
-       <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-       </svg><span id="email-display">seifah1234@gmail.com</span> </span> <span class="flex items-center gap-2">
-       <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-       </svg><span id="phone-display">01055496208</span> </span>
+       <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+       </svg>
+       <span>Giza, Egypt</span>
+      </span>
+      <span class="flex items-center gap-2">
+       <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+       </svg>
+       <span>seifah1234@gmail.com</span>
+      </span>
+      <span class="flex items-center gap-2">
+       <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+       </svg>
+       <span>01055496208</span>
+      </span>
      </div>
-    </header><!-- Summary Section -->
+    </header>
+
+    <!-- Summary -->
     <section class="mb-10">
      <div class="card rounded-2xl p-6 glow-border">
       <h2 class="relative text-lg font-semibold text-white mb-4 section-title">About Me</h2>
-      <p id="summary-display" class="text-gray-300 leading-relaxed">Software Engineer specialized in business solutions (POS, HR, Inventory, Clinic systems). Experienced in desktop, web &amp; mobile apps with strong focus on system architecture and AI.</p>
+      <p class="text-gray-300 leading-relaxed">Software Engineer specialized in business solutions (POS, HR, Inventory, Clinic systems). Experienced in desktop, web &amp; mobile apps with strong focus on system architecture and AI.</p>
      </div>
-    </section><!-- Experience Section -->
+    </section>
+
+    <!-- Experience -->
     <section class="mb-10">
      <h2 class="relative text-lg font-semibold text-white mb-6 section-title">Experience</h2>
      <div class="space-y-4">
-      <!-- Job 1 -->
       <div class="card rounded-2xl p-6 relative overflow-hidden">
        <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 to-blue-400"></div>
        <div class="pl-4">
         <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
-         <h3 class="text-white font-semibold text-lg">.NET Developer</h3><span class="text-xs text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20"> Jan 2023 – Present </span>
+         <h3 class="text-white font-semibold text-lg">.NET Developer</h3>
+         <span class="text-xs text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Jan 2023 – Present</span>
         </div>
         <p class="text-blue-300 text-sm mb-3">Original I.B.S</p>
         <p class="text-gray-400 text-sm">Developing enterprise business solutions including POS, HR, and inventory management systems using .NET technologies.</p>
        </div>
-      </div><!-- Job 2 -->
+      </div>
       <div class="card rounded-2xl p-6 relative overflow-hidden">
        <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-300"></div>
        <div class="pl-4">
         <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
-         <h3 class="text-white font-semibold text-lg">Trainee</h3><span class="text-xs text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20"> Nov 2025 – Present </span>
+         <h3 class="text-white font-semibold text-lg">Trainee</h3>
+         <span class="text-xs text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Nov 2025 – Present</span>
         </div>
         <p class="text-blue-300 text-sm mb-3">DEPI Cairo</p>
         <p class="text-gray-400 text-sm">Advanced training program focusing on modern software development practices and emerging technologies.</p>
        </div>
       </div>
      </div>
-    </section><!-- Projects Section -->
+    </section>
+
+    <!-- Projects -->
     <section class="mb-10">
      <h2 class="relative text-lg font-semibold text-white mb-6 section-title">Key Projects</h2>
      <div class="grid md:grid-cols-3 gap-4">
-      <!-- Project 1 -->
       <div class="project-card card rounded-2xl p-5 transition-all duration-300 cursor-default">
        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center mb-4">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
         </svg>
        </div>
        <h3 class="text-white font-semibold mb-2">POS &amp; Inventory System</h3>
        <p class="text-gray-400 text-sm">Complete point-of-sale solution with real-time inventory tracking and reporting.</p>
-      </div><!-- Project 2 -->
+      </div>
       <div class="project-card card rounded-2xl p-5 transition-all duration-300 cursor-default">
        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center mb-4">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
         </svg>
        </div>
        <h3 class="text-white font-semibold mb-2">HR &amp; Attendance System</h3>
        <p class="text-gray-400 text-sm">Employee management platform with automated attendance tracking and payroll integration.</p>
-      </div><!-- Project 3 -->
+      </div>
       <div class="project-card card rounded-2xl p-5 transition-all duration-300 cursor-default">
        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-400 flex items-center justify-center mb-4">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
         </svg>
        </div>
        <h3 class="text-white font-semibold mb-2">Clinic &amp; Pharmacy System</h3>
        <p class="text-gray-400 text-sm">Healthcare management solution with patient records and pharmacy inventory control.</p>
       </div>
      </div>
-    </section><!-- Skills Section -->
+    </section>
+
+    <!-- Skills -->
     <section class="mb-10">
      <h2 class="relative text-lg font-semibold text-white mb-6 section-title">Technical Skills</h2>
      <div class="card rounded-2xl p-6">
       <div class="flex flex-wrap gap-3">
-       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">.NET</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">WPF</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">ASP.NET MVC</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">REST APIs</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">SQL Server</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Sybase</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Git</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">OOP</span> <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">AI/ML</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">.NET</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">WPF</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">ASP.NET MVC</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">REST APIs</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">SQL Server</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Sybase</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Git</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">OOP</span>
+       <span class="skill-tag px-4 py-2 rounded-full text-blue-300 text-sm font-medium">AI/ML</span>
       </div>
      </div>
-    </section><!-- Education Section -->
+    </section>
+
+    <!-- Education -->
     <section class="mb-10">
      <h2 class="relative text-lg font-semibold text-white mb-6 section-title">Education</h2>
      <div class="card rounded-2xl p-6 relative overflow-hidden">
@@ -189,8 +275,10 @@
       <div class="relative">
        <div class="flex flex-wrap items-center gap-4 mb-3">
         <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center">
-         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-          <path d="M12 14l9-5-9-5-9 5 9 5z" /> <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
          </svg>
         </div>
         <div>
@@ -199,159 +287,121 @@
         </div>
        </div>
        <div class="flex items-center gap-2 mt-4">
-        <span class="text-gray-400 text-sm">GPA:</span> <span class="text-white font-bold text-lg">3.28</span> <span class="text-gray-500 text-sm">/ 4.0</span>
+        <span class="text-gray-400 text-sm">GPA:</span>
+        <span class="text-white font-bold text-lg">3.28</span>
+        <span class="text-gray-500 text-sm">/ 4.0</span>
        </div>
       </div>
      </div>
-    </section><!-- Footer -->
+    </section>
+
     <footer class="text-center pt-6 border-t border-blue-900/30">
      <p class="text-gray-500 text-sm">© 2026 Seif El-Deen Amr • Built with passion for code</p>
     </footer>
-   </div><!-- Page 2: Featured Projects -->
+   </div>
+
+   <!-- Page 2: Featured Projects -->
    <div id="page-2" class="page-content hidden relative z-10 max-w-5xl mx-auto px-6 py-12">
     <header class="text-center mb-16">
-     <h1 id="projects-title" class="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Featured Projects</h1>
+     <h1 class="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Featured Projects</h1>
      <p class="text-gray-400 text-lg">Deep dive into my enterprise software development portfolio</p>
-    </header><!-- Project Cards -->
-    <div class="space-y-8 mb-16"><!-- Project 1: POS & Inventory -->
+    </header>
+
+    <div class="space-y-8 mb-16">
+     <!-- Project 1 -->
      <div class="card rounded-2xl p-8 glow-border relative overflow-hidden">
       <div class="absolute top-6 right-6 bg-gradient-to-br from-emerald-500 to-green-400 px-4 py-2 rounded-full">
        <p class="text-white text-sm font-bold">35% Faster</p>
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 to-blue-400"></div>
-      <div class="pl-0">
-       <h3 class="text-2xl font-bold text-white mb-2">POS &amp; Inventory Management System</h3>
-       <p class="text-blue-300 text-sm font-medium mb-5">Comprehensive point-of-sale and inventory solution</p><!-- Tech Stack -->
-       <div class="flex flex-wrap gap-2 mb-6"><span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">C# .NET</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">WPF</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">SQL Server</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">Sybase</span>
-       </div><!-- Description -->
-       <div class="space-y-3 text-gray-300 text-sm">
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Handles 500+ daily transactions across multiple branches</span>
-        </div>
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Full invoice, inventory &amp; branch operations management</span>
-        </div>
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Real-time stock tracking, multi-branch sync, automated reports</span>
-        </div>
-       </div>
+      <h3 class="text-2xl font-bold text-white mb-2">POS &amp; Inventory Management System</h3>
+      <p class="text-blue-300 text-sm font-medium mb-5">Comprehensive point-of-sale and inventory solution</p>
+      <div class="flex flex-wrap gap-2 mb-6">
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">C# .NET</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">WPF</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">SQL Server</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">Sybase</span>
       </div>
-     </div><!-- Project 2: HR & Attendance -->
+      <div class="space-y-3 text-gray-300 text-sm">
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Handles 500+ daily transactions across multiple branches</span></div>
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Full invoice, inventory &amp; branch operations management</span></div>
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Real-time stock tracking, multi-branch sync, automated reports</span></div>
+      </div>
+     </div>
+
+     <!-- Project 2 -->
      <div class="card rounded-2xl p-8 glow-border relative overflow-hidden">
       <div class="absolute top-6 right-6 bg-gradient-to-br from-amber-500 to-orange-400 px-4 py-2 rounded-full">
        <p class="text-white text-sm font-bold">40% Less Errors</p>
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-blue-400"></div>
-      <div class="pl-0">
-       <h3 class="text-2xl font-bold text-white mb-2">HR &amp; Attendance Management System</h3>
-       <p class="text-blue-300 text-sm font-medium mb-5">Employee management with biometric integration</p><!-- Tech Stack -->
-       <div class="flex flex-wrap gap-2 mb-6"><span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">C# .NET</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">WPF</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">SQL Server</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">Biometric API</span>
-       </div><!-- Description -->
-       <div class="space-y-3 text-gray-300 text-sm">
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Automates time tracking for 100+ employees</span>
-        </div>
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Handles complex scenarios: night shifts, overtime, exceptions</span>
-        </div>
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Integrated biometric device logs with relational database</span>
-        </div>
-       </div>
+      <h3 class="text-2xl font-bold text-white mb-2">HR &amp; Attendance Management System</h3>
+      <p class="text-blue-300 text-sm font-medium mb-5">Employee management with biometric integration</p>
+      <div class="flex flex-wrap gap-2 mb-6">
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">C# .NET</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">WPF</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">SQL Server</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">Biometric API</span>
       </div>
-     </div><!-- Project 3: Clinic & Pharmacy -->
+      <div class="space-y-3 text-gray-300 text-sm">
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Automates time tracking for 100+ employees</span></div>
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Handles complex scenarios: night shifts, overtime, exceptions</span></div>
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Integrated biometric device logs with relational database</span></div>
+      </div>
+     </div>
+
+     <!-- Project 3 -->
      <div class="card rounded-2xl p-8 glow-border relative overflow-hidden">
       <div class="absolute top-6 right-6 bg-gradient-to-br from-purple-500 to-pink-400 px-4 py-2 rounded-full">
        <p class="text-white text-sm font-bold">Real-time Sync</p>
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-blue-400"></div>
-      <div class="pl-0">
-       <h3 class="text-2xl font-bold text-white mb-2">Clinic &amp; Pharmacy Integrated System</h3>
-       <p class="text-blue-300 text-sm font-medium mb-5">Healthcare solution with inventory automation</p><!-- Tech Stack -->
-       <div class="flex flex-wrap gap-2 mb-6"><span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">C# .NET</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">SQL Server</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">REST APIs</span> <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">Multi-module</span>
-       </div><!-- Description -->
-       <div class="space-y-3 text-gray-300 text-sm">
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Integrated clinic operations with pharmacy inventory</span>
-        </div>
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Patient records, prescriptions, and billing in one system</span>
-        </div>
-        <div class="flex gap-3">
-         <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg><span>Automated pharmacy stock updates based on doctor prescriptions</span>
-        </div>
-       </div>
+      <h3 class="text-2xl font-bold text-white mb-2">Clinic &amp; Pharmacy Integrated System</h3>
+      <p class="text-blue-300 text-sm font-medium mb-5">Healthcare solution with inventory automation</p>
+      <div class="flex flex-wrap gap-2 mb-6">
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">C# .NET</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">SQL Server</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">REST APIs</span>
+       <span class="skill-tag px-3 py-1 rounded-full text-blue-300 text-xs font-medium">Multi-module</span>
+      </div>
+      <div class="space-y-3 text-gray-300 text-sm">
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Integrated clinic operations with pharmacy inventory</span></div>
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Patient records, prescriptions, and billing in one system</span></div>
+       <div class="flex gap-3"><svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Automated pharmacy stock updates based on doctor prescriptions</span></div>
       </div>
      </div>
-    </div><!-- Contact Section -->
+    </div>
+
+    <!-- Contact -->
     <div class="card rounded-2xl p-8 glow-border text-center">
      <h2 class="text-2xl font-bold text-white mb-6">Let's Connect</h2>
-     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8"><a id="email-link" href="mailto:seifah1234@gmail.com" class="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all text-white font-medium">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-       </svg> Email Me </a> <a id="phone-link" href="tel:01055496208" class="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all text-white font-medium">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-       </svg> Call Me </a> <a id="linkedin-link" href="https://linkedin.com/in/seifeldeen" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 border-2 border-blue-500 rounded-lg hover:bg-blue-500/10 transition-all text-blue-400 font-medium">
-       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-       </svg> LinkedIn </a>
+     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+      <a href="mailto:seifah1234@gmail.com" class="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all text-white font-medium">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+       Email Me
+      </a>
+      <a href="tel:01055496208" class="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all text-white font-medium">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+       Call Me
+      </a>
+      <a href="https://linkedin.com/in/seifeldeen" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 border-2 border-blue-500 rounded-lg hover:bg-blue-500/10 transition-all text-blue-400 font-medium">
+       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+       LinkedIn
+      </a>
      </div>
      <p class="text-gray-400 text-sm border-t border-blue-900/30 pt-8">© 2026 Seif El-Deen Amr • Software Developer specializing in enterprise solutions</p>
     </div>
    </div>
-  </div>
-  <script>
-    const defaultConfig = {
-      developer_name: 'Seif El-Deen Amr',
-      job_title: 'Software Developer',
-      location: 'Giza, Egypt',
-      email: 'seifah1234@gmail.com',
-      phone: '01055496208',
-      summary_text: 'Software Engineer specialized in business solutions (POS, HR, Inventory, Clinic systems). Experienced in desktop, web & mobile apps with strong focus on system architecture and AI.',
-      projects_title: 'Featured Projects',
-      linkedin_url: 'https://linkedin.com/in/seifeldeen',
-      background_color: '#0A0E1A',
-      accent_color: '#2563EB',
-      text_color: '#FFFFFF',
-      secondary_text_color: '#9CA3AF',
-      highlight_color: '#60A5FA',
-      font_family: 'Inter',
-      font_size: 16
-    };
 
+  </div>
+
+  <script>
     // Page navigation
     document.querySelectorAll('.page-nav').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const targetPage = e.target.dataset.page;
-        
-        // Hide all pages
-        document.querySelectorAll('.page-content').forEach(page => {
-          page.classList.add('hidden');
-        });
-        
-        // Show target page
+        document.querySelectorAll('.page-content').forEach(page => page.classList.add('hidden'));
         document.getElementById(`page-${targetPage}`).classList.remove('hidden');
-        
-        // Update nav styling
         document.querySelectorAll('.page-nav').forEach(navBtn => {
           if (navBtn.dataset.page === targetPage) {
             navBtn.classList.remove('text-gray-400', 'border-transparent');
@@ -363,113 +413,8 @@
         });
       });
     });
-
-    async function onConfigChange(config) {
-      // Update text content on page 1
-      document.getElementById('name-display').textContent = config.developer_name || defaultConfig.developer_name;
-      document.getElementById('title-display').textContent = config.job_title || defaultConfig.job_title;
-      document.getElementById('location-display').textContent = config.location || defaultConfig.location;
-      document.getElementById('email-display').textContent = config.email || defaultConfig.email;
-      document.getElementById('phone-display').textContent = config.phone || defaultConfig.phone;
-      document.getElementById('summary-display').textContent = config.summary_text || defaultConfig.summary_text;
-      
-      // Update projects page title
-      document.getElementById('projects-title').textContent = config.projects_title || defaultConfig.projects_title;
-      
-      // Update contact links
-      const email = config.email || defaultConfig.email;
-      const phone = config.phone || defaultConfig.phone;
-      const linkedin = config.linkedin_url || defaultConfig.linkedin_url;
-      document.getElementById('email-link').href = `mailto:${email}`;
-      document.getElementById('phone-link').href = `tel:${phone}`;
-      document.getElementById('linkedin-link').href = linkedin;
-      
-      // Update initials
-      const name = config.developer_name || defaultConfig.developer_name;
-      const nameParts = name.split(' ');
-      const initials = nameParts.length >= 2 
-        ? (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase()
-        : name.substring(0, 2).toUpperCase();
-      document.getElementById('initials').textContent = initials;
-      
-      // Apply colors
-      const bgColor = config.background_color || defaultConfig.background_color;
-      const accentColor = config.accent_color || defaultConfig.accent_color;
-      const textColor = config.text_color || defaultConfig.text_color;
-      const highlightColor = config.highlight_color || defaultConfig.highlight_color;
-      
-      document.getElementById('portfolio-wrapper').style.backgroundColor = bgColor;
-      document.getElementById('name-display').style.color = textColor;
-      document.getElementById('title-display').style.color = highlightColor;
-      
-      // Apply font
-      const fontFamily = config.font_family || defaultConfig.font_family;
-      const baseFontStack = 'Inter, sans-serif';
-      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
-      
-      // Apply font size
-      const fontSize = config.font_size || defaultConfig.font_size;
-      document.body.style.fontSize = `${fontSize}px`;
-    }
-
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [
-          {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
-          },
-          {
-            get: () => config.accent_color || defaultConfig.accent_color,
-            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
-          },
-          {
-            get: () => config.highlight_color || defaultConfig.highlight_color,
-            set: (value) => { config.highlight_color = value; window.elementSdk.setConfig({ highlight_color: value }); }
-          },
-          {
-            get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
-            set: (value) => { config.secondary_text_color = value; window.elementSdk.setConfig({ secondary_text_color: value }); }
-          }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
-        }
-      };
-    }
-
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ['developer_name', config.developer_name || defaultConfig.developer_name],
-        ['job_title', config.job_title || defaultConfig.job_title],
-        ['location', config.location || defaultConfig.location],
-        ['email', config.email || defaultConfig.email],
-        ['phone', config.phone || defaultConfig.phone],
-        ['summary_text', config.summary_text || defaultConfig.summary_text],
-        ['projects_title', config.projects_title || defaultConfig.projects_title],
-        ['linkedin_url', config.linkedin_url || defaultConfig.linkedin_url]
-      ]);
-    }
-
-    // Initialize SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d4a561ab08fe1e8',t:'MTc3MjIyMzEzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ </body>
 </html>
+
+
